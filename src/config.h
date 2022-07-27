@@ -1,5 +1,4 @@
 #include <Arduino.h>
-const int HORIZONTAL_PB_PIN = A15;
 
 // CC values
 const int ENCODER_1 = 3;
@@ -18,7 +17,7 @@ const int TRACKS_BUTTON = 86;
 const int MIXER_BUTTON = 88;
 const int PLUGINS_BUTTON = 89;
 const int MODIFIERS_BUTTON = 90;
-const int SEQUENCERS_BUTTON = 102;   
+const int SEQUENCERS_BUTTON = 102;
 const int LOOP_IN_BUTTON = 103;
 const int LOOP_OUT_BUTTON = 104;
 const int LOOP_BUTTON = 105;
@@ -34,25 +33,32 @@ const int PLUS_BUTTON = 118;
 const int MINUS_BUTTON = 119;
 const int DUMMY = 31;
 
+// Pins
+const int HORIZONTAL_PB_PIN = 29; // RP2040: GPIO28/ADC2, pin 29; Teensy: A15, pin 39.
+#define ENCODER_1_PINS {20, 21} // Teensy: {5, 6}
+#define ENCODER_2_PINS {22, 23} // Teensy: {26, 27}
+#define ENCODER_3_PINS {24, 25} // Teensy: {29, 30}
+#define ENCODER_4_PINS {26, 27} // Teensy: {31, 32}
+
 // Row Pins
-const int ROW_0 = 24;
-const int ROW_1 = 23;
-const int ROW_2 = 34;
-const int ROW_3 = 35;
-const int ROW_4 = 28;
+const int ROW_0 = 19;
+const int ROW_1 = 18;
+const int ROW_2 = 17;
+const int ROW_3 = 16;
+const int ROW_4 = 15;
 
 // Col Pins
-const int COL_0 = 9;
-const int COL_1 = 8;
-const int COL_2 = 7;
-const int COL_3 = 4;
-const int COL_4 = 3;
-const int COL_5 = 2;
-const int COL_6 = 1;
-const int COL_7 = 0;
-const int COL_8 = 25;
-const int COL_9 = 14;
-const int COL_10 = 13;
-const int COL_11 = 41;
-const int COL_12 = 40;
-const int COL_13 = 36;
+const int COL_0 = 14;
+const int COL_1 = 13;
+const int COL_2 = 12;
+const int COL_3 = 11;
+const int COL_4 = 10;
+const int COL_5 = 9;
+const int COL_6 = 8;
+const int COL_7 = 7;
+const int COL_8 = 6;
+const int COL_9 = 5;
+const int COL_10 = 4;
+const int COL_11 = 3;
+const int COL_12 = 2;
+const int COL_13 = 1;
