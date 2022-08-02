@@ -34,31 +34,31 @@ const int MINUS_BUTTON = 119;
 const int DUMMY = 31;
 
 // Pins
-const int HORIZONTAL_PB_PIN = 29; // RP2040: GPIO28/ADC2, pin 29; Teensy: A15, pin 39.
-#define ENCODER_1_PINS {20, 21} // Teensy: {5, 6}
-#define ENCODER_2_PINS {22, 23} // Teensy: {26, 27}
-#define ENCODER_3_PINS {24, 25} // Teensy: {29, 30}
-#define ENCODER_4_PINS {26, 27} // Teensy: {31, 32}
+const int HORIZONTAL_PB_PIN = 28; // RP2040: GPIO28/ADC2, pin 29; Teensy: A15, pin 39.
+#define ENCODER_1_PINS {19, 20} // Teensy: {5, 6}
+#define ENCODER_2_PINS {21, 22} // Teensy: {26, 27}
+#define ENCODER_3_PINS {23, 24} // Teensy: {29, 30}
+#define ENCODER_4_PINS {25, 26} // Teensy: {31, 32}
 
 // Row Pins
-const int ROW_0 = 19;
-const int ROW_1 = 18;
-const int ROW_2 = 17;
-const int ROW_3 = 16;
-const int ROW_4 = 15;
+const int ROW_0 = 18;
+const int ROW_1 = 17;
+const int ROW_2 = 16;
+const int ROW_3 = 15;
+const int ROW_4 = 14;
 
 // Col Pins
-const int COL_0 = 14;
-const int COL_1 = 13;
-const int COL_2 = 12;
-const int COL_3 = 11;
-const int COL_4 = 10;
-const int COL_5 = 9;
-const int COL_6 = 8;
-const int COL_7 = 7;
-const int COL_8 = 6;
-const int COL_9 = 5;
-const int COL_10 = 4;
-const int COL_11 = 3;
-const int COL_12 = 2;
-const int COL_13 = 1;
+const int COL_0 = 13;
+const int COL_1 = 12;
+const int COL_2 = 11;
+const int COL_3 = 10;
+const int COL_4 = 9;
+const int COL_5 = 8;
+const int COL_6 = 7;
+const int COL_7 = 6;
+const int COL_8 = 5;
+const int COL_9 = 4;
+const int COL_10 = 3;
+const int COL_11 = 2;
+const int COL_12 = 1;
+const int COL_13 = 0;
