@@ -4,6 +4,16 @@
 
 // Instantiate a MIDI over USB interface.
 USBMIDI_Interface midi;
+PluggableUSBMIDI pluggableMidi;
+
+// This is the actual MIDI interface that makes use of the backend defined above.
+struct MyUSBMIDI_Interface : GenericUSBMIDI_Interface<PluggableUSBMIDI> {
+  MyUSBMIDI_Interface() = default;
+  using MIDIUSBPacket_t = PluggableUSBMIDI::setup_packet_t;
+};
+
+// Instantiate the MIDI interface to use.
+MyUSBMIDI_Interface midi;
 
 CCRotaryEncoder enc1 = {
     ENCODER_1_PINS, // pins
