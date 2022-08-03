@@ -2,35 +2,8 @@
 #include <Control_Surface.h>
 #include <ResponsiveAnalogRead.h>
 
-#include <AH/Containers/Array.hpp>
-#include <Settings/NamespaceSettings.hpp>
-#include <Adafruit_TinyUSB.h>
-
-struct USBDeviceMIDIBackend {
-    using MIDIUSBPacket_t = AH::Array<uint8_t, 4>;
-    void begin() {
-        backend.begin();
-    }
-    MIDIUSBPacket_t read() {
-        MIDIUSBPacket_t packet {};
-        backend.readPacket(packet.data);
-        return packet;
-    }
-    void write(MIDIUSBPacket_t packet) { backend.writePacket(packet.data); }
-    void sendNow() { backend.flush(); }
-    bool preferImmediateSend() { return false; }
-
-    Adafruit_USBD_MIDI backend;
-};
-
-// This is the actual MIDI interface that makes use of the backend defined above.
-struct MyUSBMIDI_Interface : GenericUSBMIDI_Interface<USBDeviceMIDIBackend> {
-  MyUSBMIDI_Interface() = default;
-  using MIDIUSBPacket_t = USBDeviceMIDIBackend::MIDIUSBPacket_t;
-};
-
 // Instantiate the MIDI interface to use.
-MyUSBMIDI_Interface midi;
+USBMIDI_Interface midi;
 
 CCRotaryEncoder enc1 = {
     ENCODER_1_PINS, // pins
