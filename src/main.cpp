@@ -5,6 +5,7 @@
 // Instantiate the MIDI interface to use.
 USBMIDI_Interface midi;
 
+/*
 CCRotaryEncoder enc1 = {
     ENCODER_1_PINS, // pins
     {ENCODER_1},         // MIDI address (CC number + optional channel)
@@ -28,13 +29,14 @@ CCRotaryEncoder enc4 = {
     {ENCODER_4},         // MIDI address (CC number + optional channel)
     1,      // optional multiplier if the control isn't fast enough
 };
+*/
 
 // Using a filtered analog kind of worked, but for some reason it would update whenever any other button was pressed as well
 // FilteredAnalog<10, 6, uint32_t> analog {A15};
 // Eventually just using the ResponsiveAnalogRead library worked out ok
-ResponsiveAnalogRead analog(HORIZONTAL_PB_PIN, true);
+//ResponsiveAnalogRead analog(HORIZONTAL_PB_PIN, true);
 // Note that the ADC has a 12 bit resolution by default on the 4.1
-PitchBendSender<12> pbSender;
+//PitchBendSender<12> pbSender;
 
 // N.B This did not work on the 4.1. The reading was noisy
 // https://github.com/tttapa/Control-Surface/issues/726
@@ -44,6 +46,7 @@ PitchBendSender<12> pbSender;
 //     {27},       // MIDI address (CC number + optional channel)
 // };
 
+
 const int maxTransposition = 4;
 const int minTransposition = -1 * maxTransposition;
 const int transpositionSemitones = 12;
@@ -51,7 +54,7 @@ Transposer<minTransposition, maxTransposition>transposer(transpositionSemitones)
 
 const AddressMatrix<2, 14> noteAddresses = {{
                                                 {1, 54, 56, 58, 1, 61, 63, 1, 66, 68, 70, 1, 73, 75},
-                                                {53, 55, 57, 59, 60, 62, 64, 65, 67, 69, 71, 72, 74, 76},  
+                                                {53, 55, 57, 59, 60, 62, 64, 65, 67, 69, 71, 72, 74, 76},
                                             }};
 
 Bankable::NoteButtonMatrix<2, 14> noteButtonMatrix = {
@@ -62,13 +65,14 @@ Bankable::NoteButtonMatrix<2, 14> noteButtonMatrix = {
     CHANNEL_1,    // channel and cable number
 };
 
+
 // Note that plus and minus buttons need special care since they also control the transposer
 // When presses are detected on plus and minus as part of the matrix scanning just send a dummy CC message
 // The plus/minus buttons are handled separately as part of updatePlusMinus()
 const AddressMatrix<3, 11> ccAddresses = {{
                                               {LOOP_BUTTON, LOOP_IN_BUTTON, LOOP_OUT_BUTTON, DUMMY, DUMMY, DUMMY, ENCODER_1_BUTTON, ENCODER_2_BUTTON, DUMMY, ENCODER_3_BUTTON, ENCODER_4_BUTTON},
-                                              {CUT_BUTTON, PASTE_BUTTON, SLICE_BUTTON, SAVE_BUTTON, UNDO_BUTTON, DUMMY, DUMMY, DUMMY, DUMMY, DUMMY, DUMMY},
-                                              {CONTROL_BUTTON, RECORD_BUTTON, PLAY_BUTTON, STOP_BUTTON, SETTINGS_BUTTON, TEMPO_BUTTON, MIXER_BUTTON, TRACKS_BUTTON, PLUGINS_BUTTON, MODIFIERS_BUTTON, SEQUENCERS_BUTTON}
+                                              {CUT_BUTTON, PASTE_BUTTON, SLICE_BUTTON, SAVE_BUTTON, UNDO_BUTTON, PLUGINS_BUTTON, MODIFIERS_BUTTON, SEQUENCERS_BUTTON, DUMMY, DUMMY, DUMMY},
+                                              {CONTROL_BUTTON, RECORD_BUTTON, PLAY_BUTTON, STOP_BUTTON, SETTINGS_BUTTON, TEMPO_BUTTON, MIXER_BUTTON, TRACKS_BUTTON, DUMMY, DUMMY, DUMMY}
                                          }};
 
 CCButtonMatrix<3, 11> ccButtonmatrix = {
@@ -151,19 +155,20 @@ void updatePlusMinus() {
 }
 
 void setup() {
-    analog.setAnalogResolution(4096);
-    analog.setActivityThreshold(10.0f);
+    //analog.setAnalogResolution(4096);
+    //analog.setActivityThreshold(10.0f);
     Control_Surface.begin(); // Initialize Control Surface
 }
 
 void loop() {
     Control_Surface.loop(); // Update the Control Surface
+    /*
     analog.update();
     if(analog.hasChanged()) {
         // Remap so that pushing stick to the right increases the value
         int remapped =  map(analog.getValue(), 0, 4095, 4095, 0);
         pbSender.send(remapped, CHANNEL_1);
     }
-
+    */
     updatePlusMinus();
 }
