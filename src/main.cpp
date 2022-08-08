@@ -5,46 +5,46 @@
 // Instantiate the MIDI interface to use.
 USBMIDI_Interface midi;
 
-/*
-CCRotaryEncoder enc1 = {
-    ENCODER_1_PINS, // pins
-    {ENCODER_1},         // MIDI address (CC number + optional channel)
-    1,      // optional multiplier if the control isn't fast enough
-};
 
-CCRotaryEncoder enc2 = {
-    ENCODER_2_PINS, // pins
-    {ENCODER_2},         // MIDI address (CC number + optional channel)
-    1,      // optional multiplier if the control isn't fast enough
-};
+// CCRotaryEncoder enc1 = {
+//     ENCODER_1_PINS, // pins
+//     {ENCODER_1},         // MIDI address (CC number + optional channel)
+//     1,      // optional multiplier if the control isn't fast enough
+// };
 
-CCRotaryEncoder enc3 = {
-    ENCODER_3_PINS, // pins
-    {ENCODER_3},         // MIDI address (CC number + optional channel)
-    1,      // optional multiplier if the control isn't fast enough
-};
+// CCRotaryEncoder enc2 = {
+//     ENCODER_2_PINS, // pins
+//     {ENCODER_2},         // MIDI address (CC number + optional channel)
+//     1,      // optional multiplier if the control isn't fast enough
+// };
 
-CCRotaryEncoder enc4 = {
-    ENCODER_4_PINS, // pins
-    {ENCODER_4},         // MIDI address (CC number + optional channel)
-    1,      // optional multiplier if the control isn't fast enough
-};
-*/
+// CCRotaryEncoder enc3 = {
+//     ENCODER_3_PINS, // pins
+//     {ENCODER_3},         // MIDI address (CC number + optional channel)
+//     1,      // optional multiplier if the control isn't fast enough
+// };
+
+// CCRotaryEncoder enc4 = {
+//     ENCODER_4_PINS, // pins
+//     {ENCODER_4},         // MIDI address (CC number + optional channel)
+//     1,      // optional multiplier if the control isn't fast enough
+// };
+
 
 // Using a filtered analog kind of worked, but for some reason it would update whenever any other button was pressed as well
 // FilteredAnalog<10, 6, uint32_t> analog {A15};
 // Eventually just using the ResponsiveAnalogRead library worked out ok
-//ResponsiveAnalogRead analog(HORIZONTAL_PB_PIN, true);
-// Note that the ADC has a 12 bit resolution by default on the 4.1
-//PitchBendSender<12> pbSender;
+// ResponsiveAnalogRead analog(HORIZONTAL_PB_PIN, true);
+// // Note that the ADC has a 12 bit resolution by default on the 4.1
+// PitchBendSender<12> pbSender;
 
 // N.B This did not work on the 4.1. The reading was noisy
 // https://github.com/tttapa/Control-Surface/issues/726
 // I had to use ResponsiveAnalogRead instead
-// CCPotentiometer pitchBendPotentiometer = {
-//     A14,        // Analog pin connected to potentiometer
-//     {27},       // MIDI address (CC number + optional channel)
-// };
+CCPotentiometer pitchBendPotentiometer = {
+      A1,        // Analog pin connected to potentiometer
+      {27},       // MIDI address (CC number + optional channel)
+};
 
 
 const int maxTransposition = 4;
@@ -155,20 +155,20 @@ void updatePlusMinus() {
 }
 
 void setup() {
-    //analog.setAnalogResolution(4096);
-    //analog.setActivityThreshold(10.0f);
+    // analog.setAnalogResolution(4096);
+    // analog.setActivityThreshold(10.0f);
     Control_Surface.begin(); // Initialize Control Surface
 }
 
 void loop() {
     Control_Surface.loop(); // Update the Control Surface
-    /*
-    analog.update();
-    if(analog.hasChanged()) {
-        // Remap so that pushing stick to the right increases the value
-        int remapped =  map(analog.getValue(), 0, 4095, 4095, 0);
-        pbSender.send(remapped, CHANNEL_1);
-    }
-    */
-    updatePlusMinus();
+    
+    // analog.update();
+    // if(analog.hasChanged()) {
+    //     // Remap so that pushing stick to the right increases the value
+    //     int remapped =  map(analog.getValue(), 0, 4095, 4095, 0);
+    //     pbSender.send(remapped, CHANNEL_1);
+    // }
+    
+    // updatePlusMinus();
 }
