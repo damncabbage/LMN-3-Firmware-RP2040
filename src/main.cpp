@@ -6,23 +6,23 @@
 USBMIDI_Interface midi;
 
 
-// CCRotaryEncoder enc1 = {
-//     ENCODER_1_PINS, // pins
-//     {ENCODER_1},         // MIDI address (CC number + optional channel)
-//     1,      // optional multiplier if the control isn't fast enough
-// };
+CCRotaryEncoder enc1 = {
+    ENCODER_1_PINS, // pins
+    {ENCODER_1},         // MIDI address (CC number + optional channel)
+    1,      // optional multiplier if the control isn't fast enough
+};
 
-// CCRotaryEncoder enc2 = {
-//     ENCODER_2_PINS, // pins
-//     {ENCODER_2},         // MIDI address (CC number + optional channel)
-//     1,      // optional multiplier if the control isn't fast enough
-// };
+CCRotaryEncoder enc2 = {
+    ENCODER_2_PINS, // pins
+    {ENCODER_2},         // MIDI address (CC number + optional channel)
+    1,      // optional multiplier if the control isn't fast enough
+};
 
-// CCRotaryEncoder enc3 = {
-//     ENCODER_3_PINS, // pins
-//     {ENCODER_3},         // MIDI address (CC number + optional channel)
-//     1,      // optional multiplier if the control isn't fast enough
-// };
+CCRotaryEncoder enc3 = {
+    ENCODER_3_PINS, // pins
+    {ENCODER_3},         // MIDI address (CC number + optional channel)
+    1,      // optional multiplier if the control isn't fast enough
+};
 
 // CCRotaryEncoder enc4 = {
 //     ENCODER_4_PINS, // pins
