@@ -24,11 +24,11 @@ CCRotaryEncoder enc3 = {
     1,      // optional multiplier if the control isn't fast enough
 };
 
-// CCRotaryEncoder enc4 = {
-//     ENCODER_4_PINS, // pins
-//     {ENCODER_4},         // MIDI address (CC number + optional channel)
-//     1,      // optional multiplier if the control isn't fast enough
-// };
+CCRotaryEncoder enc4 = {
+    ENCODER_4_PINS, // pins
+    {ENCODER_4},         // MIDI address (CC number + optional channel)
+    1,      // optional multiplier if the control isn't fast enough
+};
 
 
 // Using a filtered analog kind of worked, but for some reason it would update whenever any other button was pressed as well
