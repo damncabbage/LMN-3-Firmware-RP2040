@@ -35,10 +35,10 @@ const int DUMMY = 31;
 
 // Pins
 const int HORIZONTAL_PB_PIN = 28; // RP2040: GPIO28/ADC2, pin 29; Teensy: A15, pin 39.
-#define ENCODER_1_PINS {19, 20} // Teensy: {5, 6}
-#define ENCODER_2_PINS {21, 22} // Teensy: {26, 27}
-#define ENCODER_3_PINS {23, 24} // Teensy: {29, 30}
-#define ENCODER_4_PINS {25, 26} // Teensy: {31, 32}
+#define ENCODER_1_PINS {20, 19} // Teensy: {5, 6}
+#define ENCODER_2_PINS {22, 21} // Teensy: {26, 27}
+#define ENCODER_3_PINS {24, 24} // Teensy: {29, 30}
+#define ENCODER_4_PINS {26, 25} // Teensy: {31, 32}
 
 // Row Pins
 const int ROW_0 = 18;

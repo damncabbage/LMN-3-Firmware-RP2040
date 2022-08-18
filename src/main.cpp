@@ -170,5 +170,5 @@ void loop() {
     //     pbSender.send(remapped, CHANNEL_1);
     // }
     
-    // updatePlusMinus();
+    updatePlusMinus();
 }
